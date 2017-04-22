@@ -12,6 +12,8 @@ func _fixed_process(delta):
 			speed=speed*-1;
 		if get_pos().y>500 :
 			speed=speed*-1;
+		
+		rotate(10*delta)
 		move(Vector2(0,speed*delta));
 		if Globals.get("gameRunning")==false:
 			get_node(".").queue_free();
@@ -22,11 +24,12 @@ func _fixed_process(delta):
 		Globals.set("triggerEnemysound",true);
 		if Globals.has("gameScore"):
 			Globals.set("gameScore",Globals.get("gameScore") + points);
+			get_node("/root/aw_root/info").set_text("Level 3")
 			get_node(".").queue_free();
 
 func _ready():
 	set_fixed_process(true);
-	set_pos(Vector2(500,100));
+	set_pos(Vector2(500,150));
 
 func type():
-	return "Boss"
+	return "enemy"

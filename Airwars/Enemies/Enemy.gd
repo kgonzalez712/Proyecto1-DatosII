@@ -17,7 +17,7 @@ func _ready():
 	
 func _process(delta):
 	
-	print(Globals.get("enemy_cnt"))
+	#print(Globals.get("enemy_cnt"))
 	
 	if (Globals.get("enemy_cnt") == 15):
 		create_enemy = false
@@ -26,6 +26,7 @@ func _process(delta):
 		Globals.set("BossBattle",true);
 		var newBE = be.instance();
 		add_child(newBE);
+		Globals.set("triggerStarSound",true);
 		newBE.set_owner(self);
 	
 	elif (Globals.get("enemy_cnt") == 31):
@@ -43,6 +44,7 @@ func _process(delta):
 		Globals.set("BossBattle",true);
 		var newBAMFE = bamfe.instance();
 		add_child(newBAMFE);
+		Globals.set("triggerSHSound",true);
 		newBAMFE.set_owner(self);
 	
 	elif create_enemy==true:

@@ -10,4 +10,4 @@ func _ready():
 	pass
 
 func type():
-	return "rocket"
+	return "enemy"

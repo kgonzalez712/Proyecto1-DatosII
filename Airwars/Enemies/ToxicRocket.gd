@@ -2,10 +2,10 @@ extends KinematicBody2D
 
 var hitpoints=1;
 var points=10;
-var speed = 10;
+var speed = 200;
 
 func _fixed_process(delta):
-	move(Vector2(0,100*delta))
+	move(Vector2(0,speed*delta))
 	if Globals.has("gameRunning"):
 		if Globals.get("gameRunning")==false:
 			get_node(".").queue_free();
@@ -23,4 +23,4 @@ func _ready():
 	set_pos((Vector2(rand_range(50,700),-100)));
 
 func type():
-	return "rocket"
+	return "enemy"

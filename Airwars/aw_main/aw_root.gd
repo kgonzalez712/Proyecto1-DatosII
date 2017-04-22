@@ -4,7 +4,7 @@ extends Node
 
 var score = 0;
 var highscore = 0;
-
+onready var info = get_node("info")
 
 func _ready():
 	Globals.set("gameRunning",false);
@@ -29,7 +29,7 @@ func _process(delta):
 func star_game():
 	score = 0
 	get_node("hud_root").set_score(score)
-	get_node("info").set_text("Running");
+	get_node("info").set_text("Level 1");
 	get_node("hud_root").set_running();
 	Globals.set("gameLevels",true);  
 	Globals.set("gameRunning",true);
@@ -46,7 +46,3 @@ func run_game(delta):
 		if (score >= highscore):
 			highscore = score
 		get_node("hud_root").set_game_over(highscore)
-	
-	#elif (Input.is_action_pressed("ui_select")):
-	#	score = score + 1
-	#	get_node("hud_root").set_score(score)

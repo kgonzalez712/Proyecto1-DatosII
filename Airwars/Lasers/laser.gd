@@ -31,5 +31,5 @@ func _ready():
 	set_fixed_process(true);
 	
 	
-func get_type():
+func type():
 	return "laser"

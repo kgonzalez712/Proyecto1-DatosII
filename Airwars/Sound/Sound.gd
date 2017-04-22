@@ -7,7 +7,9 @@ func _ready():
 	Globals.set("triggeerEnemySound",false);
 	Globals.set("triggerIsaacSound",false);
 	Globals.set("triggerGodzillaSound",false);
-
+	Globals.set("triggerSHSound",false);
+	Globals.set("triggerStarSound",false);
+	
 func _process(delta):
 	if Globals.get("triggerLaserSound"):
 		play("shoot_small",false);
@@ -21,3 +23,9 @@ func _process(delta):
 	if Globals.get("triggerGodzillaSound"):
 		play("Godzilla",false);
 		Globals.set("triggerGodzillaSound",false);
+	if Globals.get("triggerSHSound"):
+		play("Silent Hill Siren",false);
+		Globals.set("triggerSHSound",false);
+	if Globals.get("triggerStarSound"):
+		play("Star Wars TIE fighter flyby and spinout sound FX",false);
+		Globals.set("triggerStarSound",false);

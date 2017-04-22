@@ -1,8 +1,8 @@
-extends KinematicBody2D
+extends Node
 
 # class member variables go here, for example:
 # var a = 2
-var hitpoints = 1
+# var b = "textvar"
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -10,4 +10,4 @@ func _ready():
 	pass
 
 func type():
-	return "laser"
+	return "ship"

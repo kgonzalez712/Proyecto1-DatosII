@@ -54,6 +54,7 @@ func _fixed_process(delta):
 		gun_fired = Input.is_action_pressed("ui_select")
 		
 		if get_node(".").is_colliding():
+			print(true)
 			Globals.set("triggerEnemysound",true);
 			kin_speed = Vector2(0,0);
 			Globals.set("gameLevels",false);
@@ -66,3 +67,6 @@ func _fixed_process(delta):
 func _ready():
 	set_fixed_process(true);
 	get_node(".").move_to(Vector2(400,650));
+
+func type():
+	return "ship"

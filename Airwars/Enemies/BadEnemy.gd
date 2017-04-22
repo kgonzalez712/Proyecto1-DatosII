@@ -21,11 +21,12 @@ func _fixed_process(delta):
 		Globals.set("triggerEnemySound",true);
 		if Globals.has("gameScore"):
 			Globals.set("gameScore",Globals.get("gameScore") + points);
+			get_node("/root/aw_root/info").set_text("Level 2")
 			get_node(".").queue_free();
 
 func _ready():
 	set_fixed_process(true);
-	set_pos(Vector2(200,125));
+	set_pos(Vector2(400,150));
 
 func type():
-	return "boss"
+	return "enemy"

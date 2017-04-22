@@ -15,7 +15,13 @@ func _fixed_process(delta):
 	if (c == 0):
 		calibrate()
 		c = 1
+	
+	if (get_node("ntblaser_body").is_colliding()):
+		if (get_node("ntblaser_body").get_collider().type() == "enemy"):
+				get_node("ntblaser_body").add_collision_exception_with(get_node("ntblaser_body").get_collider())
+
 	get_node("ntblaser_body").move(Vector2(speed*cos(angle)*delta, speed*sin(angle)*delta))
+	
 	if get_node("ntblaser_body").get_global_pos().y < 0 or get_node("ntblaser_body").get_global_pos().x > 800 or get_node("ntblaser_body").get_global_pos().y > 720 or get_node("ntblaser_body").get_global_pos().x < 0:
 		get_node(".").queue_free()
 
@@ -55,7 +61,7 @@ func set_pos(pos):
 	get_node("ntblaser_body").set_pos((Vector2(pos.x,pos.y)))
 
 func type():
-	return "laser"
+	return get_node("KinematicBody2D").type()
 
 
 

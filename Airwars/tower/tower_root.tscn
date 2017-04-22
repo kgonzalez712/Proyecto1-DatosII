@@ -9,7 +9,7 @@ script/script = ExtResource( 1 )
 [node name="tower_timer" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 2.5
+wait_time = 4.0
 one_shot = false
 autostart = true
 

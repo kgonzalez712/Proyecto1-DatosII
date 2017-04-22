@@ -3,8 +3,8 @@
 [ext_resource path="res://aw_main/aw_root.gd" type="Script" id=1]
 [ext_resource path="res://aw_main/chintzy.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Sound/Sound.scn" type="PackedScene" id=3]
-[ext_resource path="res://Enemies/Enemy.scn" type="PackedScene" id=4]
-[ext_resource path="res://tower/tower_root.tscn" type="PackedScene" id=5]
+[ext_resource path="res://tower/tower_root.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/Enemy.scn" type="PackedScene" id=5]
 [ext_resource path="res://background/background.tscn" type="PackedScene" id=6]
 [ext_resource path="res://hud/hud_root.tscn" type="PackedScene" id=7]
 [ext_resource path="res://PlayerShip/Ship.scn" type="PackedScene" id=8]
@@ -32,9 +32,9 @@ max_lines_visible = -1
 
 [node name="SamplePlayer" parent="." instance=ExtResource( 3 )]
 
-[node name="Enemies_Root" parent="." instance=ExtResource( 4 )]
+[node name="tower_root" parent="." instance=ExtResource( 4 )]
 
-[node name="tower_root" parent="." instance=ExtResource( 5 )]
+[node name="Enemies_Root" parent="." instance=ExtResource( 5 )]
 
 [node name="background" parent="." instance=ExtResource( 6 )]
 

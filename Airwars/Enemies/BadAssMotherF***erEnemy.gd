@@ -4,6 +4,8 @@ var hitpoints=50;
 var points=500;
 var speedx=100;
 var speedy=-100;
+var ilaser = preload("res://Enemies/iLaser.tscn")
+var lasercount = 0
 
 
 func _fixed_process(delta):
@@ -23,11 +25,22 @@ func _fixed_process(delta):
 		Globals.set("triggerIsaacSound",true);
 		if Globals.has("gameScore"):
 			Globals.set("gameScore",Globals.get("gameScore") + points);
+			get_node("/root/aw_root/info").set_text("Endless level")
 			get_node(".").queue_free();
 
 func _ready():
 	set_fixed_process(true);
-	set_pos(Vector2(100,120));
+	set_pos(Vector2(400,120));
 
 func type():
-	return "Boss"
+	return "enemy"
+
+func _on_Timer_timeout():
+	lasercount += 1
+	var tlaser = ilaser.instance()
+	tlaser.set_name("ilaser" + str(lasercount))
+	add_child(tlaser)
+	tlaser.set_owner(self)
+	tlaser.set_pos(Vector2(get_node(".").get_pos().x+475/2.5*0.4+6, get_node(".").get_pos().y))
+	get_node("ilaser" + str(lasercount) + "/KinematicBody2D").add_collision_exception_with(get_node("."))
+	pass # replace with function body

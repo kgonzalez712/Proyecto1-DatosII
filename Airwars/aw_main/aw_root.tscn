@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=10 format=1]
 
 [ext_resource path="res://aw_main/aw_root.gd" type="Script" id=1]
 [ext_resource path="res://aw_main/chintzy.fnt" type="BitmapFont" id=2]
 [ext_resource path="res://Sound/Sound.scn" type="PackedScene" id=3]
 [ext_resource path="res://Enemies/Enemy.scn" type="PackedScene" id=4]
-[ext_resource path="res://background/background.tscn" type="PackedScene" id=5]
-[ext_resource path="res://hud/hud_root.tscn" type="PackedScene" id=6]
-[ext_resource path="res://PlayerShip/Ship.scn" type="PackedScene" id=7]
-[ext_resource path="res://Music/Music.scn" type="PackedScene" id=8]
+[ext_resource path="res://tower/tower_root.tscn" type="PackedScene" id=5]
+[ext_resource path="res://background/background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://hud/hud_root.tscn" type="PackedScene" id=7]
+[ext_resource path="res://PlayerShip/Ship.scn" type="PackedScene" id=8]
+[ext_resource path="res://Music/Music.scn" type="PackedScene" id=9]
 
 [node name="aw_root" type="Node"]
 
@@ -33,12 +34,14 @@ max_lines_visible = -1
 
 [node name="Enemies_Root" parent="." instance=ExtResource( 4 )]
 
-[node name="background" parent="." instance=ExtResource( 5 )]
+[node name="tower_root" parent="." instance=ExtResource( 5 )]
 
-[node name="hud_root" parent="." instance=ExtResource( 6 )]
+[node name="background" parent="." instance=ExtResource( 6 )]
 
-[node name="Ship_Root" parent="." instance=ExtResource( 7 )]
+[node name="hud_root" parent="." instance=ExtResource( 7 )]
 
-[node name="Music_root" parent="." instance=ExtResource( 8 )]
+[node name="Ship_Root" parent="." instance=ExtResource( 8 )]
+
+[node name="Music_root" parent="." instance=ExtResource( 9 )]
 
 

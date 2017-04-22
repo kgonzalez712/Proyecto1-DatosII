@@ -15,5 +15,5 @@ func set_running():
 	get_node("label_menu").hide()
 
 func set_score(score):
-	get_node("label_score").set_text("Score: 0000" + str(score))
+	get_node("label_score").set_text("Score: " + str(score))
 	

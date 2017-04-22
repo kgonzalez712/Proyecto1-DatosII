@@ -57,6 +57,8 @@ func _fixed_process(delta):
 			Globals.set("triggerEnemysound",true);
 			kin_speed = Vector2(0,0);
 			Globals.set("gameLevels",false);
+			Globals.set("enemy_cnt",0)
+			
 	else:
 		kin_speed = Vector2(0,0);
 		get_node(".").move_to(Vector2(400,650));
@@ -64,4 +66,3 @@ func _fixed_process(delta):
 func _ready():
 	set_fixed_process(true);
 	get_node(".").move_to(Vector2(400,650));
-

@@ -15,4 +15,6 @@ func set_pos(p):
 
 func _ready():
 	set_fixed_process(true);
-	
+
+func get_type():
+	return "laser"

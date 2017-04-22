@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://tower/bad_tower/Sbtower.gd" type="Script" id=1]
+[ext_resource path="res://tower/bad_tower/bad_tower.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 45.5, 70.5 )
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends RigidBody2D\n\nvar value = 100\nvar laser = preload(\"res://tower/bad_tower/blaser.tscn\")\nvar lasercount = 0\nvar hitpoints = 3\n\nfunc _ready():\n\tset_fixed_process(true)\n\tset_pos(Vector2(rand_range(182/2,800-182/2),-283/2))\n\tapply_impulse(get_pos(),Vector2(0,15))\n\tpass\n\nfunc _fixed_process(delta):\n\tif Globals.get(\"gameRunning\"):\n\t\tif !Globals.get(\"gameRunning\"):\n\t\t\tget_node(\".\").queue_free()\n\tif get_pos().y > 720+283/2:\n\t\tget_node(\".\").queue_free()\n\tif hitpoints <= 0:\n\t\tGlobals.set(\"enemy_cnt\", Globals.get(\"enemy_cnt\")+1)\n\t\tif Globals.has(\"gameScore\"):\n\t\t\tGlobals.set(\"gameScore\", Globals.get(\"gameScore\") + value)\n\t\t\tget_node(\".\").queue_free()\n\nfunc _on_Timer_timeout():\n\tlasercount += 1\n\tvar tlaser = laser.instance()\n\ttlaser.set_name(\"laser\" + str(lasercount))\n\tadd_child(tlaser)\n\ttlaser.set_owner(self)\n\ttlaser.set_pos(Vector2(get_node(\".\").get_pos().x, get_node(\".\").get_pos().y + 27))\n\tget_node(\"laser\" + str(lasercount) + \"/blaser_body\").add_collision_exception_with(get_node(\".\"))\n\tpass # replace with function body\n\nfunc type():\n\treturn \"tower\""
+
+[node name="btower" type="Node"]
+
+script/script = ExtResource( 1 )
+
+[node name="btower_body" type="RigidBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 0.0
+gravity_scale = 0.09
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 0
+contact_monitor = false
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = -1.0
+damp_override/angular = -1.0
+script/script = SubResource( 2 )
+
+[node name="btower_sprite" type="Sprite" parent="btower_body"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+
+[node name="btower_shape" type="CollisionShape2D" parent="btower_body"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Timer" type="Timer" parent="btower_body"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[connection signal="timeout" from="btower_body/Timer" to="btower_body" method="_on_Timer_timeout"]
+
+

@@ -6,6 +6,7 @@ func _ready():
 	Globals.set("triggerLaserSound",false);
 	Globals.set("triggeerEnemySound",false);
 	Globals.set("triggerIsaacSound",false);
+	Globals.set("triggerGodzillaSound",false);
 
 func _process(delta):
 	if Globals.get("triggerLaserSound"):
@@ -17,3 +18,6 @@ func _process(delta):
 	if Globals.get("triggerIsaacSound"):
 		play("isaacscream",false);
 		Globals.set("triggerIsaacSound",false);
+	if Globals.get("triggerGodzillaSound"):
+		play("Godzilla",false);
+		Globals.set("triggerGodzillaSound",false);
